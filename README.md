@@ -215,6 +215,11 @@ Steps:
 3. Deploy
 
 ---
+# Deployment Link
+vercel:
+https://ecoyaan-checkout-wine.vercel.app/
+github:https://github.com/Shivfun99/ecoyaan
+
 
 # Future Improvements
 
@@ -227,6 +232,12 @@ If extended further, the following improvements could be added:
 * Order history tracking
 
 ---
+## Assets & References
+
+* Product images used in the cart UI are placeholder images.
+* The bamboo toothbrush illustration used for demonstration was generated using AI for visual representation purposes only.
+* Cart data is mock data provided in the assignment and served through a Next.js API route.
+
 
 # Author
 
