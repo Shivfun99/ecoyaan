@@ -1,36 +1,235 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ecoyaan Checkout Flow – Frontend Engineering Assignment
 
-## Getting Started
+## Overview
 
-First, run the development server:
+This project implements a simplified **checkout flow inspired by Ecoyaan** using **Next.js, React, and Tailwind CSS**.
+The application demonstrates **Server-Side Rendering (SSR), state management, responsive UI components, and form validation**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The flow allows users to:
+
+1. View cart items and order summary
+2. Enter shipping address details
+3. Review order and simulate payment
+4. See an order success confirmation
+
+---
+
+# Tech Stack
+
+**Framework**
+
+* Next.js (App Router)
+
+**Frontend**
+
+* React
+* Tailwind CSS
+
+**State Management**
+
+* Zustand
+
+**Form Handling**
+
+* React Hook Form
+
+**Backend Mock**
+
+* Next.js API Routes
+
+**Deployment**
+
+* Vercel (recommended)
+
+---
+
+# Application Architecture
+
+The project follows a **component-based architecture** with clear separation of concerns.
+
+### Folder Structure
+
+```
+app/
+ ├ page.tsx                → Cart / Order Summary (SSR)
+ ├ checkout/
+ │   └ page.tsx            → Shipping Address Page
+ ├ payment/
+ │   └ page.tsx            → Payment Confirmation
+ ├ success/
+ │   └ page.tsx            → Order Success Page
+ ├ layout.tsx
+ └ globals.css
+
+components/
+ ├ CartItem.tsx            → Product display component
+ ├ OrderSummary.tsx        → Pricing calculation + checkout button
+ └ AddressForm.tsx         → Shipping form with validation
+
+pages/api/
+ └ cart.ts                 → Mock backend API for cart data
+
+store/
+ └ checkoutStore.ts        → Zustand global state (address data)
+
+types/
+ └ types.ts                → TypeScript types
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Key Architectural Decisions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Server-Side Rendering (SSR)
 
-## Learn More
+The cart data is fetched using **Next.js Server Components** to ensure the order summary is rendered on the server before the page loads.
 
-To learn more about Next.js, take a look at the following resources:
+Benefits:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Faster initial load
+* SEO-friendly
+* Simulates real production e-commerce systems
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### 2. Global State with Zustand
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Zustand is used to store the **shipping address state across pages**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This allows:
+
+* Checkout → Payment page state persistence
+* Minimal boilerplate compared to Redux
+* Clean and scalable architecture
+
+---
+
+### 3. Component-Based UI
+
+Reusable UI components were created:
+
+* **CartItem** → Displays individual product
+* **OrderSummary** → Handles pricing calculations
+* **AddressForm** → Handles form validation and submission
+
+This improves **maintainability and scalability**.
+
+---
+
+### 4. Form Validation
+
+Shipping form validation is implemented using **React Hook Form**, ensuring:
+
+* Required fields validation
+* Proper form handling
+* Better performance than controlled forms
+
+---
+
+### 5. Mock Backend API
+
+A **Next.js API route** (`/api/cart`) is used to simulate backend data fetching.
+
+This mimics a real-world API request and allows testing SSR behavior.
+
+---
+
+# Checkout Flow
+
+```
+Cart Page (SSR)
+        ↓
+Shipping Address Form
+        ↓
+Payment Confirmation
+        ↓
+Order Success Page
+```
+
+---
+
+# Features
+
+* Server-side rendered cart data
+* Responsive checkout UI
+* Form validation
+* State persistence across pages
+* Simulated payment confirmation
+* Clean modular architecture
+
+---
+
+# Running the Project Locally
+
+### 1. Clone the Repository
+
+```
+git clone <your-repository-link>
+cd ecoyaan-checkout
+```
+
+---
+
+### 2. Install Dependencies
+
+```
+npm install
+```
+
+---
+
+### 3. Run Development Server
+
+```
+npm run dev
+```
+
+---
+
+### 4. Open in Browser
+
+```
+http://localhost:3000
+```
+
+---
+
+# Mock API Endpoint
+
+Cart data is served from:
+
+```
+http://localhost:3000/api/cart
+```
+
+---
+
+# Deployment
+
+The project can be deployed easily using **Vercel**.
+
+Steps:
+
+1. Push repository to GitHub
+2. Import repository in Vercel
+3. Deploy
+
+---
+
+# Future Improvements
+
+If extended further, the following improvements could be added:
+
+* Real payment gateway integration
+* Persistent cart storage
+* Authentication
+* Backend database integration
+* Order history tracking
+
+---
+
+# Author
+
+**Shiv Kumar Mishra**
+VIT-AP University
+Competitive Programmer – Codeforces Specialist
